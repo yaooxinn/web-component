@@ -1,0 +1,20 @@
+.siderMenu {
+    .MuiPaper-root {
+        z-index: 1000;
+        top: 64px;
+        .MuiButtonBase-root {
+            border-radius: 4px;
+            margin-bottom: 4px;
+            &.selected {
+                background-color: rgba(59, 158, 217, 0.25);
+            }
+            &.selected-children {
+                background-color: #B8CEDA;
+            }
+        }
+    }
+
+    .MuiTypography-root {
+        font-size: 0.8125rem;
+    }
+}

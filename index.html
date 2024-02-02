@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afterburner Components</title>
+  </head>
+  <body>
+    <script type="module" src="/src/index.ts"></script>
+    <mdvap-navigations id="sider-menu" selected-hpid="999954" on-menu-click="handleMenuClick" on-hospital-change="handleHospitalChange" is-open="false">
+      <h3>main content</h3>
+    </mdvap-navigations>
+    <script>
+      // 要素に値を割り当てるために取得する DOM 要素
+      const myElement = document.getElementById('sider-menu');
+      
+      // 要素に割り当てる属性値を定義
+      const attributeValue = [
+        {
+          label: "診療分析",
+          children: [
+            { label: "疾患別統計" },
+            { label: "DPCサマリ" },
+            { label: "パス分析" },
+            { label: "外来分析" },
+          ],
+        },
+        {
+          label: "検索",
+          children: [{ label: "検索機能" }],
+        },
+        {
+          label: "DPC対策",
+          children: [
+            { label: "コーディングチェック" },
+            { label: "機能評価係数Ⅱ", children: [{ label: "指数別分析" }] },
+            { label: "DPC特定病院群要件", children: [{ label: "要件別分析" }] },
+          ],
+        },
+      ];
+
+      const hospitalNames =[
+      {
+        HospitalID: "3fc5d901-54b3-456a-96e0-d23de35a66c5",
+        HPID: "999953",
+        Name: "CK_SW病院992",
+      },
+      {
+        HospitalID: "3fc5d901-54b3-456a-96e0-d23de35a66c4",
+        HPID: "999954",
+        Name: "CK_SW病院994",
+      },
+    ];
+      
+      // 値を要素の属性に割り当てる
+      myElement.setAttribute('menu-items', JSON.stringify(attributeValue));
+      myElement.setAttribute('hospital-items', JSON.stringify(hospitalNames));
+      // myElement.setAttribute('is-open', 'true');
+
+      // メニュークリックイベントの処理
+      function handleMenuClick(path) {
+        console.log('menu path=>',path)
+      }
+
+      function handleHospitalChange(hsname) {
+        console.log('HPID=>',hsname)
+      }
+    </script>
+  </body>
+</html>
